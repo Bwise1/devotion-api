@@ -8,7 +8,8 @@ var DevotionSchema = new Schema({
         required: 'kindly enter the Devotion title'
     },
     date: {
-
+        type: Date,
+        required: "kindly enter date"
     },
     bibleVerse: {
         type: Date,
@@ -17,7 +18,7 @@ var DevotionSchema = new Schema({
     },
     description: {
         type: String,
-        required: 'kindly enter the Devotion title'
+        required: 'kindly enter the Devotion description'
     },
     memoryVerse: {
         type: String,

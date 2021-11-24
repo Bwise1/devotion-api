@@ -3,10 +3,12 @@ var express = require('express'),
     port = process.env.PORT || 8000,
     mongoose = require('mongoose'),
     Devotion = require('./api/models/devotionModel'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cors = require('cors');
 
+app.use(cors());
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://libradish:ndiaboskibahoshe@ciucf-devotion.huthz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect("mongodb+srv://libradish:ndiaboskibahoshe@ciucf-devotion.huthz.mongodb.net/ciucf?retryWrites=true&w=majority",  { useNewUrlParser: true });
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
