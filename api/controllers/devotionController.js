@@ -1,6 +1,6 @@
 'use strit'
 var mongoose = require('mongoose'),
-    Devotion = mongoose.model('Devotions');
+    Devotion = mongoose.model('devotions');
 
 
 //fetch all devotions

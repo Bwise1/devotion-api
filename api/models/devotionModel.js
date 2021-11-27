@@ -8,11 +8,11 @@ var DevotionSchema = new Schema({
         required: 'kindly enter the Devotion title'
     },
     date: {
-        type: Date,
-        required: "kindly enter date"
+        type: String,
+        //required: "kindly enter date"
     },
     bibleVerse: {
-        type: Date,
+        type: String,
         required: 'kindly enter the date for the devotion'
 
     },
@@ -34,4 +34,4 @@ var DevotionSchema = new Schema({
     },
 
 });
-module.exports = mongoose.model('Devotions', DevotionSchema);
+module.exports = mongoose.model('devotions', DevotionSchema);
