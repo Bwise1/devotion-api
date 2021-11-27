@@ -3,13 +3,16 @@ var express = require('express'),
     port = process.env.PORT || 8000,
     mongoose = require('mongoose'),
     Devotion = require('./api/models/devotionModel'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    dotenv = require("dotenv");
+
+dotenv.config();
 
 mongoose.Promise = global.Promise;
 try {
     // Connect to the MongoDB cluster
      mongoose.connect(
-        'mongodb+srv://libradosh:ndiaboskibahoshe@ciucf-devotion.huthz.mongodb.net/ciucf?retryWrites=true&w=majority',
+        process.env.DB_URL,
       { useNewUrlParser: true, useUnifiedTopology: true },
       () => console.log(" Mongoose is connected")
     );
