@@ -8,7 +8,8 @@ var DevotionSchema = new Schema({
         required: 'kindly enter the Devotion title'
     },
     date: {
-        type: String,
+        type: Date,
+        default: Date.now
         //required: "kindly enter date"
     },
     bibleVerse: {
