@@ -27,6 +27,10 @@ try {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get("/", function (req, res) {
+  res.send("<h1>Hello World!</h1>")
+})
+
 var routes = require('./api/routes/devotionRoutes');
 routes(app);
 app.listen(port);
