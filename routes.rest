@@ -1,1 +1,19 @@
 GET  http://localhost:8000/devotions
+
+###
+GET https://ciucf-devotion-api.herokuapp.com/devotions
+
+
+###
+POST https://ciucf-devotion-api.herokuapp.com/devotions HTTP/1.1
+    content-type: application/json
+
+{
+    "topic": "Test Topic",
+    "bibleVerse": "Proverbs 3 vs 1",
+    "description": "this is just another test devotional guide",
+    "memoryVerse": "proverbs 11 vs 3",
+    "prayerPoint": "In anything you do for this life, avoid see finish",
+    "meditate": "think about it",
+    "date": ""
+  }
