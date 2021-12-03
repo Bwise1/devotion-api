@@ -6,6 +6,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     //cors = require('cors'),
     dotenv = require("dotenv");
+var cors = require('cors');
+
+app.use(cors());
 
 dotenv.config();
 
