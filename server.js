@@ -4,6 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Devotion = require('./api/models/devotionModel'),
     bodyParser = require('body-parser'),
+    cors = require('cors');
     dotenv = require("dotenv");
 
 dotenv.config();
@@ -25,6 +26,7 @@ try {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 var routes = require('./api/routes/devotionRoutes');
 routes(app);
