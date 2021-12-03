@@ -4,7 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Devotion = require('./api/models/devotionModel'),
     bodyParser = require('body-parser'),
-    cors = require('cors'),
+    //cors = require('cors'),
     dotenv = require("dotenv");
 
 dotenv.config();
@@ -23,7 +23,7 @@ try {
   }
 // mongoose.connect('mongodb+srv://libradosh:ndiaboskibahoshe@ciucf-devotion.huthz.mongodb.net/ciucf?retryWrites=true&w=majority');
 
-app.use(cors);
+//app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
