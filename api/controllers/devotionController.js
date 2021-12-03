@@ -6,9 +6,10 @@ var mongoose = require('mongoose'),
 //fetch all devotions
 exports.list_all_devotions = function(req, res) {
     Devotion.find({}, function(err, devotion){
+        let result = devotion;
         if(err)
             res.send(err);
-        res.json(devotion);
+        res.json({devotions:result})
     });
 };
 

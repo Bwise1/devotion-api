@@ -4,6 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     Devotion = require('./api/models/devotionModel'),
     bodyParser = require('body-parser'),
+    cors = require('cors');
     dotenv = require("dotenv");
     //cors = require("cors");
 
