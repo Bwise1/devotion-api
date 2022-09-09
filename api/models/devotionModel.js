@@ -23,6 +23,10 @@ var DevotionSchema = new Schema({
     type: String,
     required: "kindly enter the memory verse",
   },
+  memoryVerseText: {
+    type: String,
+    required: "kindly enter the memory verse text",
+  },
   prayerPoint: {
     type: String,
     required: "kindly enter the prayer point",
