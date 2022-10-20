@@ -23,7 +23,6 @@ try {
 } catch (e) {
   console.log("could not connect");
 }
-// mongoose.connect('mongodb+srv://libradosh:ndiaboskibahoshe@ciucf-devotion.huthz.mongodb.net/ciucf?retryWrites=true&w=majority');
 
 //app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
