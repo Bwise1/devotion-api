@@ -11,7 +11,7 @@ var UserSchema = new Schema({
     required: "kindly provide password",
   },
   email: {
-    type: email,
+    type: String,
     required: "kindly provide email",
   },
   roles: [
