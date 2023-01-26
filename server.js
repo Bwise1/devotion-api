@@ -6,6 +6,7 @@ var express = require("express"),
   //cors = require('cors'),
   dotenv = require("dotenv");
 var cors = require("cors");
+const cookieSession = require("cookie-session");
 
 app.use(cors());
 
@@ -30,13 +31,21 @@ db.mongoose
 //app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(
+  cookieSession({
+    name: "bezkoder-session",
+    // keys: ['key1', 'key2'],
+    secret: "COOKIE_SECRET", // should use as secret environment variable
+    httpOnly: true,
+  })
+);
 app.get("/", function (req, res) {
   res.send("<h1>Hello World!</h1>");
 });
 
-var routes = require("./api/routes/devotionRoutes");
-routes(app);
+require("./api/routes/devotionRoutes")(app);
+require("./api/routes/authRoutes")(app);
+require("./api/routes/userRoutes")(app);
 app.listen(port);
 console.log("ciucf devotional RESTful API server started on: " + port);
 
