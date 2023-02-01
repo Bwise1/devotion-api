@@ -1,10 +1,14 @@
-"use strit";
-var mongoose = require("mongoose"),
-  Devotion = mongoose.model("devotions");
+"use strict";
 
+const db = require("../models");
+const Cdevotions = db.devotion;
+
+exports.test = (req, res) => {
+  res.status(200).send("test devotions.");
+};
 //fetch all devotions
 exports.list_all_devotions = function (req, res) {
-  Devotion.find({}, function (err, devotion) {
+  Cdevotions.find({}, function (err, devotion) {
     let result = devotion;
     if (err) res.send(err);
     res.json({ devotions: result });
@@ -13,7 +17,7 @@ exports.list_all_devotions = function (req, res) {
 
 exports.create_a_devotion = function (req, res) {
   var new_devotion = new Devotion(req.body);
-  Devotion.findOne({ date: new_devotion.date }, function (err, devotion) {
+  Cdevotions.findOne({ date: new_devotion.date }, function (err, devotion) {
     if (!devotion) {
       new_devotion.save(function (err, devotion) {
         if (err) res.send(err);
@@ -28,7 +32,7 @@ exports.create_a_devotion = function (req, res) {
 };
 
 exports.read_a_devotion = function (req, res) {
-  Devotion.findById(req.params.devotionId, function (err, devotion) {
+  Cdevotions.findById(req.params.devotionId, function (err, devotion) {
     if (err) res.send(err);
     res.json(devotion);
   });
@@ -47,7 +51,7 @@ exports.update_a_devotion = function (req, res) {
 };
 
 exports.delete_a_devotion = function (req, res) {
-  Devotion.remove(
+  Cdevotions.remove(
     {
       _id: req.params.devotionId,
     },

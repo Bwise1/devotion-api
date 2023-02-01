@@ -1,16 +1,15 @@
-"use strict";
+var devotionList = require("../controllers/devotionController");
+
 module.exports = function (app) {
-  var devotionList = require("../controllers/devotionController");
-
+  app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
+    next();
+  });
   //devotion routes
-  app
-    .route("api/devotions")
-    .get(devotionList.list_all_devotions)
-    .post(devotionList.create_a_devotion);
+  app.get("/api/devotions", devotionList.list_all_devotions);
+  app.post("/api/devotions", devotionList.create_a_devotion);
 
-  app
-    .route("api/devotions/:devotionId")
-    .get(devotionList.read_a_devotion)
-    .put(devotionList.update_a_devotion)
-    .delete(devotionList.delete_a_devotion);
+  app.get("/api/devotions/:devotionId", devotionList.read_a_devotion);
+  app.put("/api/devotions/:devotionId", devotionList.update_a_devotion);
+  app.delete("/api/devotions/:devotionId", devotionList.delete_a_devotion);
 };
