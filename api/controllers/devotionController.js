@@ -16,7 +16,7 @@ exports.list_all_devotions = function (req, res) {
 };
 
 exports.create_a_devotion = function (req, res) {
-  var new_devotion = new Devotion(req.body);
+  var new_devotion = new Cdevotions(req.body);
   Cdevotions.findOne({ date: new_devotion.date }, function (err, devotion) {
     if (!devotion) {
       new_devotion.save(function (err, devotion) {
