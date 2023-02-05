@@ -33,9 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(
   cookieSession({
-    name: "bezkoder-session",
+    name: "ciucf-session",
     // keys: ['key1', 'key2'],
-    secret: "COOKIE_SECRET", // should use as secret environment variable
+    secret: "COOKIE_SECRET",
     httpOnly: true,
   })
 );

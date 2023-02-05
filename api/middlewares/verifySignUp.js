@@ -13,7 +13,7 @@ checkDublicateUsernameOrEmail = (req, res, next) => {
     }
 
     if (user) {
-      res.status(400).send({ message: "Failed! Username is already inn use!" });
+      res.status(400).send({ message: "Failed! Username is already in use!" });
       return;
     }
 
