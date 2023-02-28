@@ -31,14 +31,14 @@ db.mongoose
 //app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-  cookieSession({
-    name: "ciucf-session",
-    // keys: ['key1', 'key2'],
-    secret: "COOKIE_SECRET",
-    httpOnly: true,
-  })
-);
+// app.use(
+//   cookieSession({
+//     name: "bezkoder-session",
+//     // keys: ['key1', 'key2'],
+//     secret: "COOKIE_SECRET", // should use as secret environment variable
+//     httpOnly: true,
+//   })
+// );
 app.get("/", function (req, res) {
   res.send("<h1>Hello World!</h1>");
 });

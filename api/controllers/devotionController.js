@@ -61,3 +61,21 @@ exports.delete_a_devotion = function (req, res) {
     }
   );
 };
+
+exports.get_devotions_by_month = function (req, res) {
+  const month = parseInt(req.params.month) - 1;
+  Cdevotions.find({
+    date: {
+      $expr: {
+        $eq: [{ $month: { $toDate: "$date" } }, month],
+      },
+    },
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
