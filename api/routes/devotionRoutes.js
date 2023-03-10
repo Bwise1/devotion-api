@@ -10,7 +10,7 @@ module.exports = function (app) {
   app.post("/api/devotions", devotionList.create_a_devotion);
 
   app.get("/api/devotions/:devotionId", devotionList.read_a_devotion);
-  app.put("/api/devotions/:devotionId", devotionList.update_a_devotion);
+  app.patch("/api/devotions/:devotionId", devotionList.update_a_devotion);
   app.delete("/api/devotions/:devotionId", devotionList.delete_a_devotion);
 
   //get devotions by month

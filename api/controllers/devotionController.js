@@ -39,15 +39,36 @@ exports.read_a_devotion = function (req, res) {
 };
 
 exports.update_a_devotion = function (req, res) {
-  Devotion.findOneAndUpdate(
-    { _id: req.params.devotionId },
-    req.body,
-    { new: true },
-    function (err, devotion) {
-      if (err) res.send(err);
-      res.json(devotion);
-    }
-  );
+  // Set updatedAt to the current time
+  req.body.updatedAt = new Date();
+
+  // Get the original created time
+  Cdevotions.findById(req.params.devotionId, function (err, devotion) {
+    if (err) res.send(err);
+
+    // Set createdAt to the original created time
+    req.body.createdAt = devotion.createdAt;
+
+    // Update the devotion with the new fields
+    Cdevotions.findOneAndUpdate(
+      { _id: req.params.devotionId },
+      req.body,
+      { new: true },
+      function (err, devotion) {
+        if (err) res.send(err);
+        res.json(devotion);
+      }
+    );
+  });
+  // Devotion.findOneAndUpdate(
+  //   { _id: req.params.devotionId },
+  //   req.body,
+  //   { new: true },
+  //   function (err, devotion) {
+  //     if (err) res.send(err);
+  //     res.json(devotion);
+  //   }
+  // );
 };
 
 exports.delete_a_devotion = function (req, res) {
