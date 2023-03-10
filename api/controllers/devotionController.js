@@ -63,15 +63,48 @@ exports.delete_a_devotion = function (req, res) {
 };
 
 exports.get_devotions_by_month = function (req, res) {
-  const month = parseInt(req.params.month) - 1;
+  const month = parseInt(req.params.month);
+  console.log(month);
+  const currentYear = new Date().getFullYear();
+
+  // Calculate the start and end dates for the given month
+  const startOfMonth = new Date(currentYear, month - 1, 1);
+  const endOfMonth = new Date(currentYear, month, 0);
+
+  // const pipeline = [
+  //   {
+  //     $match: {
+  //       date: { $regex: `-${month}-` }, // match the documents for the specified month
+  //     },
+  //   },
+  //   {
+  //     $sort: {
+  //       date: 1, // sort the documents by date in ascending order
+  //     },
+  //   },
+  //   {
+  //     $group: {
+  //       _id: "$date", // group the documents by date
+  //       devotions: { $push: "$$ROOT" }, // include a list of all the documents in that group
+  //     },
+  //   },
+  //   {
+  //     $project: {
+  //       _id: 0, // exclude the _id field from the output
+  //       date: "$_id", // include the date field from the _id field
+  //       devotions: 1, // include the devotions field
+  //     },
+  //   },
+  // ];
+  // Cdevotions.aggregate(pipeline)
   Cdevotions.find({
     date: {
-      $expr: {
-        $eq: [{ $month: { $toDate: "$date" } }, month],
-      },
+      $gte: startOfMonth.toISOString(),
+      $lte: endOfMonth.toISOString(),
     },
   })
     .then((data) => {
+      console.log(data);
       res.send(data);
     })
     .catch((err) => {
