@@ -35,5 +35,13 @@ var DevotionSchema = new Schema({
     type: String,
     required: "kindly enter the meditation",
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 module.exports = mongoose.model("devotions", DevotionSchema);
