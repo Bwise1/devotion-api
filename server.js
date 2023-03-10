@@ -14,6 +14,7 @@ dotenv.config();
 const db = require("./api/models");
 const Role = db.role;
 // Connect to the MongoDB cluster
+db.mongoose.set("strictQuery", false);
 db.mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
