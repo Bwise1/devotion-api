@@ -87,10 +87,13 @@ exports.get_devotions_by_month = function (req, res) {
   const month = parseInt(req.params.month);
   console.log(month);
   const currentYear = new Date().getFullYear();
+  console.log(currentYear);
 
   // Calculate the start and end dates for the given month
   const startOfMonth = new Date(currentYear, month - 1, 1);
   const endOfMonth = new Date(currentYear, month, 0);
+
+  console.log(startOfMonth.toISOString(), " ", endOfMonth.toISOString());
 
   // const pipeline = [
   //   {
@@ -120,8 +123,8 @@ exports.get_devotions_by_month = function (req, res) {
   // Cdevotions.aggregate(pipeline)
   Cdevotions.find({
     date: {
-      $gte: startOfMonth.toISOString(),
-      $lte: endOfMonth.toISOString(),
+      $gte: startOfMonth.toISOString().split("T")[0],
+      $lte: endOfMonth.toISOString().split("T")[0],
     },
   })
     .then((data) => {
